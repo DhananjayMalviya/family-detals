@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Family Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: #333;
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #ff6347;
+        }
+        input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 80%;
+            margin: 10px 0;
+        }
+        button {
+            padding: 10px 20px;
+            background: #ff6347;
+            border: none;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #ff4500;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Family Details</h1>
+        <input type="text" id="memberId" placeholder="Enter Member ID (e.g., 2009)">
+        <button onclick="getFamilyDetails()">Get Details</button>
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        // Family data
+        const familyMembers = {
+            "2009": { name: "Dhananjay", age: 15, address: "" },
+            "2008": { name: "Rani", age: 16, address: "" },
+            "1971": { name: "Jayprakash", age: 53, address: "" },
+            "1976": { name: "Namita", age: 50, address: "" }
+        };
+
+        function getFamilyDetails() {
+            const id = document.getElementById('memberId').value.trim();
+            const resultDiv = document.getElementById('result');
+            const member = familyMembers[id];
+            
+            if (member) {
+                resultDiv.innerHTML = `
+                    <strong>Name:</strong> ${member.name} <br>
+                    <strong>Age:</strong> ${member.age} <br>
+                    <strong>Address:</strong> ${member.address ? member.address : 'Not Available'}
+                `;
+            } else {
+                resultDiv.innerHTML = 'No details found for the entered ID.';
+            }
+        }
+    </script>
+
+</body>
+</html>
